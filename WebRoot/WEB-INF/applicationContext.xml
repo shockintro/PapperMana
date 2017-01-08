@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans            
+			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd            
+			http://www.springframework.org/schema/context            
+			http://www.springframework.org/schema/context/spring-context-2.5.xsd            
+			http://www.springframework.org/schema/aop            
+			http://www.springframework.org/schema/aop/spring-aop-2.5.xsd            
+			http://www.springframework.org/schema/tx             
+			http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<context:annotation-config/>
+	<context:component-scan base-package="com"/>
+	
+	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/ThesisMana"/>
+		<property name="username" value="root"/>
+		<property name="password" value="545545"/>
+	</bean>
+	
+	
+	<bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" id="sessionFactory">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.qnu.thesis.model</value>
+			</list>
+		</property>
+	</bean>
+	<bean class="org.springframework.orm.hibernate4.HibernateTransactionManager" id="transactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+
+</beans>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	
+	
+	<package name="user" namespace="/user" extends="struts-default">
+	    <action name="login" class="com.qnu.thesis.action.ThesisAction" method="userLogin">
+			<result name="success">/ThesisSearch.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+		<action name="register" class="com.qnu.thesis.action.ThesisAction" method="userRegist">
+			<result name="success">/index.jsp</result>
+			<result name="error">/Register.jsp</result>
+		</action>
+		<action name="search" class="com.qnu.thesis.action.ThesisAction" method="search">
+			<result name="success">/ThesisSearch.jsp</result>
+			<result name="error">/ThesisSearch.jsp</result>
+		</action>
+		<action name="Manalogin" class="com.qnu.thesis.action.ThesisAction" method="ManauserLogin">
+			<result name="success">/Manager.jsp</result>
+			<result name="error">/ManaLogin.jsp</result>
+		</action>
+		<action name="userSearch" class="com.qnu.thesis.action.ThesisAction" method="userSearch">
+			<result name="success">/Manager.jsp</result>
+			<result name="error">/Manager.jsp</result>
+		</action>
+		
+	</package>
+	
+	<package name="ajax" extends="struts-default,json-default" namespace="/ajax">  
+		<action name="pluginAjax" class="com.qnu.thesis.action.ThesisAction" method="pluginAjax">  
+            <result type="json">  
+                <param name="root">Text</param>  
+            </result>  
+        </action > 
+	</package>
+	
+	<package name="upload" extends="struts-default" namespace="/upload">
+        <action name="upload" class="com.qnu.thesis.action.ThesisAction" method="upload">
+            <!-- 动态设置savePath的属性值 -->
+            <param name="savePath">/images</param>
+            <result name="success">/Manager.jsp</result>
+            <result name="error">/Manager.jsp</result>
+            <result name="input">/Manager.jsp</result>
+            <interceptor-ref name="fileUpload">
+                <!-- 文件过滤 -->
+               
+				
+                <!-- 文件大小, 以字节为单位 -->
+                <param name="maximumSize">1025956</param>
+            </interceptor-ref>
+            <!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+            <interceptor-ref name="defaultStack" />
+        </action>
+    </package>
+	
+</struts>    
