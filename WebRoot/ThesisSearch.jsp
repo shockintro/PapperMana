@@ -93,7 +93,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	.bottom{ height:30px; width:280px;padding:0 10px;}
 	.bottom input{height:30px; width:100px; border:0;}
 	</style>
-	
+	<script>
+	function out(){
+		window.location.href="http://localhost:8080/PapperMana/index.jsp";
+	}
+	</script>
   </head>
   
   <body>

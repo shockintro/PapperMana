@@ -208,7 +208,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	
 	function out(){
-		window.location.href="http://localhost:8080/PapperMana/index.jsp";
+		window.location.href="http://localhost:8080/PapperMana/ManaLogin.jsp";
 	}
 	
 </script>

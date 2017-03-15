@@ -9,7 +9,7 @@
 			http://www.springframework.org/schema/context            
 			http://www.springframework.org/schema/context/spring-context-2.5.xsd            
 			http://www.springframework.org/schema/aop            
-			http://www.springframework.org/schema/aop/spring-aop-2.5.xsd            
+			http://www.springframework.org/schema/aop/spring-aop-2.5.REFsd            
 			http://www.springframework.org/schema/tx             
 			http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 	<context:annotation-config/>
@@ -17,7 +17,7 @@
 	
 	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost:3306/ThesisMana"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/PapperMana"/>
 		<property name="username" value="root"/>
 		<property name="password" value="545545"/>
 	</bean>
